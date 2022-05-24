@@ -1,0 +1,20 @@
+{
+    "name": "aplicacion-de-consola",
+    "version": "1.0.0",
+    "description": "Aplicacion crud de consola",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon node app.js"
+    },
+    "author": "Danlois Tovar",
+    "license": "MIT",
+    "dependencies": {
+        "colors": "^1.4.0",
+        "inquirer": "^8.2.4",
+        "uuid": "^8.3.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.16"
+    }
+}
