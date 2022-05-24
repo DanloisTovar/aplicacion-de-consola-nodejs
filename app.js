@@ -41,7 +41,7 @@ const main = async () => {
                 break;
         }
 
-        // guardarDB(tareas.listadoArray);
+        guardarDB(tareas.listadoArray);
 
         await pausa();
     } while (opcion !== '0');
