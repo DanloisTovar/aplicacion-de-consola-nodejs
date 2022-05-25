@@ -27,7 +27,7 @@ const main = async () => {
 
     do {
         opcion = await inquirerMenu();
-        console.log({ opcion });
+        // console.log({ opcion });
 
         switch (opcion) {
             case '1':
@@ -37,12 +37,11 @@ const main = async () => {
                 tareas.agregarTarea(descripcion);
                 break;
             case '2':
-                console.log(tareas.listadoArray);
+                tareas.listadoCompleto();
                 break;
         }
 
         guardarDB(tareas.listadoArray);
-
         await pausa();
     } while (opcion !== '0');
 };
