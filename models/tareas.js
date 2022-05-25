@@ -46,6 +46,39 @@ class Tareas {
             );
         });
     }
+    // !mostar tareas completadas:
+    listarTareasCompletadas(tareasCompletadas = true) {
+        this.listadoArray.forEach((tarea, key) => {
+            const indice = `${(key += 1)}`.green;
+            const tareax = `${'Descripcion: '}`.blue;
+            const { description, completado } = tarea;
+            const estado = completado ? 'Completado'.green : 'Pendiente'.red;
+            if (completado) {
+                console.log(
+                    `${indice}. ${tareax}` +
+                        ` ${description}`.yellow +
+                        ` | Estado: ${estado}`,
+                );
+            }
+        });
+    }
+
+    // !mostar tareas pendientes:
+    listarTareasPendientes(tareasPendientes = null) {
+        this.listadoArray.forEach((tarea, key) => {
+            const indice = `${(key += 1)}`.green;
+            const tareax = `${'Descripcion: '}`.blue;
+            const { description, completado } = tarea;
+            const estado = completado ? 'Completado'.green : 'Pendiente'.red;
+            if (!completado) {
+                console.log(
+                    `${indice}. ${tareax}` +
+                        ` ${description}`.yellow +
+                        ` | Estado: ${estado}`,
+                );
+            }
+        });
+    }
 }
 
 module.exports = Tareas;
