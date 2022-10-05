@@ -94,4 +94,53 @@ const crearInput = async (message) => {
 
     return descripcion;
 };
-module.exports = { inquirerMenu, pausa, crearInput };
+
+// !listar Borrar tareas:
+const listarBorrarTareas = async (tareas = []) => {
+    const choices = tareas.map((tarea, index) => {
+        const idx = `${index + 1}.`.green;
+        return {
+            value: tarea.id,
+            name: `${idx} ${tarea.description}`,
+        };
+    });
+
+    choices.unshift({
+        value: '0',
+        name: '0.'.green + ' Cancelar',
+    });
+
+    const preguntas = [
+        {
+            type: 'list',
+            name: 'id',
+            message: 'Borrar',
+            choices,
+        },
+    ];
+
+    const { id } = await inquirer.prompt(preguntas);
+
+    return id;
+};
+
+const confirmar = async (mensaje) => {
+    const pregunta = [
+        {
+            type: 'confirm',
+            name: 'ok',
+            mensaje,
+        },
+    ];
+
+    const { ok } = await inquirer.prompt(pregunta);
+
+    return ok;
+};
+module.exports = {
+    inquirerMenu,
+    pausa,
+    crearInput,
+    listarBorrarTareas,
+    confirmar,
+};

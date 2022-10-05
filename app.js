@@ -3,7 +3,13 @@
 colors: para colores en la consola: https://www.npmjs.com/package/colors
  */
 require('colors');
-const { inquirerMenu, pausa, crearInput } = require('./helpers/inquirer');
+const {
+    inquirerMenu,
+    pausa,
+    crearInput,
+    listarBorrarTareas,
+    confirmar,
+} = require('./helpers/inquirer');
 const { guardarDB, leerDb } = require('./helpers/guardarArchivos');
 const Tarea = require('./models/tarea');
 const Tareas = require('./models/tareas');
@@ -44,6 +50,18 @@ const main = async () => {
                 break;
             case '4':
                 tareas.listarTareasPendientes();
+                break;
+            case '6':
+                const id = await listarBorrarTareas(tareas.listadoArray);
+                console.log({ id });
+                if (id !== '0') {
+                    const ok = await confirmar('¿Estas seguro?');
+                    if (ok) {
+                        tareas.borradoDeTareas(id);
+                        console.log('Tarea borrada');
+                    }
+                }
+                break;
         }
 
         guardarDB(tareas.listadoArray);
